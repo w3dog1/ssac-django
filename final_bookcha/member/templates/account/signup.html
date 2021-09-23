@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOKCHA</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbuGh2Y%2Fbtrec3KoRnm%2FKZePZMZjsk1i32qziqb0XK%2Fimg.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+        <body>
+            <main class="form-signin">
+                <form method="post">
+                    {% csrf_token %}
+                <div class="h1_cover">
+                    <h1 class="h3 mb-3 fw-normal">회원가입</h1>
+                </div>
+                <div>
+                    {{ form.email|add_class:"cp-input form-control mb-3 bg-light"|attr:"placeholder:이메일"|add_error_class:"error" }}
+                    {% for error in form.email.errors %}
+                        <div class="error-message">{{ error }}</div>
+                    {% endfor %}
+                </div>
+
+                <div>
+                    {{ form.nickname|add_class:"cp-input form-control mb-3 bg-light"|attr:"placeholder:닉네임"|add_error_class:"error"}}
+                    {% for error in form.nickname.errors %}
+                        <div class="error-message">{{ error }}</div>
+                    {% endfor %}
+                </div>
+
+                <div>
+                    {{ form.password1|add_class:"cp-input form-control mb-3 bg-light"|attr:"placeholder:비밀번호"}}
+                </div>
+
+                <div>
+                    {{ form.password2|add_class:"cp-input form-control mb-3 bg-light"|attr:"placeholder:비밀번호 확인"}}
+                </div>
+
+                <div class="radio mb-1 text-muted">
+                    <label>
+                    <input type="radio" value="radio" required> 북챠피디아 이용 약관에 전체 동의합니다.
+                    </label>
+                </div>
+
+                <button id="login_button" class="cp-button w-100 btn btn-lg mt-2" type="submit">Sign up</button>
+                <p class="mt-4 mb-1">이미 회원이신가요? <a class="link text_login" href="{% url 'account_login' %}">로그인</a></p>
+                <p class="mb-4 text-muted">2021-09-07</p>
+
+                </form>
+            </main>
+        </body>
+</html>
+{% endblock content %}

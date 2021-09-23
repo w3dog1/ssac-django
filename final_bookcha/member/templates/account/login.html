@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOKCHA</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbuGh2Y%2Fbtrec3KoRnm%2FKZePZMZjsk1i32qziqb0XK%2Fimg.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+    <body class="d- flex text-center text-white bg-dark mg-3" cz-shortcut-listen="true">
+            <main class="form-signin">
+                <form method="post" style="width: 320px;">
+                    {% csrf_token %}
+                    <div class="h1_cover">
+                        <h1 class="h3 mb-3 fw-normal">로그인</h1>
+                    </div>
+                    
+                    {% for error in form.non_field_errors %}
+                        <div class="form-error error-message">{{ error }}</div>
+                    {% endfor %}
+                    
+                    <div>
+                        {{ form.login|add_class:"cp-input form-control mb-3 bg-light"|attr:"placeholder:이메일"|add_error_class:"error" }}
+                        {% for error in form.login.errors %}
+                        <div class="form-error error-message">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    
+                    <div>
+                        {{ form.password|add_class:"cp-input form-control mb-3 bg-light"|attr:"placeholder:패스워드"}}
+                        {% for error in form.password.errors %}
+                        <div class="form-error error-message">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    
+                    <button id="login_button" class="cp-button w-100 btn btn-lg mt-2" type="submit">로그인</button>
+                    <p class="mt-4 mb-1"><a class="link text_login" href="{% url 'account_reset_password' %}">비밀번호 찾기</a></p>
+                    <p class="mt-1 mb-2"><a class="link text_login" href="{% url 'account_signup' %}">회원가입</a></p>
+                    {% load socialaccount %}
+                    <p class="mt-1 mb-2"><a class="link text_login" href=" {% provider_login_url 'naver' %}">네이버 로그인</a></p>
+                    <p class="mb-4 text-muted">2021-09-15</p>
+                    
+                </form>
+            </main>
+    </body>
+</html>
+{% endblock content %}

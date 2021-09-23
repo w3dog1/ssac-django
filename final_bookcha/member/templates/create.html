@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row gx-4 gx-lg-5 border mb-3 pd-2 d-flex justify-content-center">
+        <div class="col-lg-4 col-md-12 col-sm-12 text-center mb-4">
+            <div class="mt-5 mb-5 text-center form-floatin">
+                <h1 class="h3 mt-2 mb-5 fw-normal">Add Book Information</h1>
+                <form action="{% url 'book-create' %}" method="post">
+                    {% csrf_token %}
+                    <table>
+                        {{ form.as_table }}
+                    </table>
+                    <button class="btn btn-info btn-sm mt-4" type="submit">register</button>
+                </form>
+            </div>
+        </div>             
+    </div>
+</div>
+{% endblock %}

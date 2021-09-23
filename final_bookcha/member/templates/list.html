@@ -1,0 +1,48 @@
+    {% extends 'base.html'%}
+    {% load static%}
+    {% block content%}
+    <section class="page-section" id="services">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center mt-0 mb-5">Recommended for you</h2>
+            <hr class="divider mb-5" />
+            <!--첫번째 줄-->
+            {% for item in books %}
+            <div class="row gx-4 gx-lg-5 border mb-3 pd-2 d-flex justify-content-center">
+                <div class="col-lg-4 col-md-12 col-sm-12 text-center">
+                    <div class="mt-5 mb-5 text-center">
+                        <div class="mb-2"><i class="bi-gem fs-1 text-primary"></i></div>
+                        <img src="{{ item.bookcovers}}" alt="" style="width: 170px; height: 230px;" class="mb-2 custom_cover" />
+                        <h3 class="h4 mb-2">{{ item.name }}</h3>
+                        <h4 class="h5 mb-2 text-muted">{{ item.writer }}</h4>
+                        <p class="card-text">리뷰: {{ item.reviews_count }}개, 평점: {{ item.average_point }}점</p>
+                        <a href="{% url 'book-detail' id=item.id %}" class="btn btn-warning mb-1">자세히 보기</a>
+                    </div>
+                </div>             
+            </div>
+    {% endfor %}
+
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <div class="pagination">
+                <span class="step-links text-center" style="width: 100%;">
+                {% if books.has_previous %}
+                    <a href="?page=1">&laquo;</a>
+                    <a href="?page={{ books.previous_page_number }}">{{ books.previous_page_number }}</a>
+                {% endif %}
+
+                <span class="current">
+                    {{ books.number }}
+                </span>
+
+                {% if books.has_next %}
+                    <a href="?page={{ books.next_page_number }}">{{ books.next_page_number }}</a>
+                    <a href="?page={{ books.paginator.num_pages }}">{{ books.paginator.num_pages }}</a>
+                {% endif %}
+            </span>
+            </div>
+        </div>
+    </div>
+</div>
+    {% endblock%}
+
+-->

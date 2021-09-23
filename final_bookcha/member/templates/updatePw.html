@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOKCHA</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbuGh2Y%2Fbtrec3KoRnm%2FKZePZMZjsk1i32qziqb0XK%2Fimg.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+</head>
+</head>
+    <body class="d- flex text-center text-white bg-dark mg-3" cz-shortcut-listen="true">
+<!--header-->
+<header class="mb-auto">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a href="http://49.50.172.121:8800/member/home"><img id="nav_img" class="mb-4 navbar-brand" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FuAV4y%2Fbtrd5EvWVRw%2F4ZTGJqhtplydRDG6NRXsjK%2Fimg.png" alt=""></a>
+        <!-- <a class="navbar-brand" href="#">BOOKCHA</a> -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="http://49.50.172.121:8800/member/home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="http://49.50.172.121:8800/member/list">Book</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/member/review/list">Reviews</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="http://49.50.172.121:8800/member/create">Add</a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                My pages
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="http://49.50.172.121:8800/member/join">Join</a></li>
+                <li><a class="dropdown-item" href="http://49.50.172.121:8800/member/login">Login</a></li>
+                <li><a class="dropdown-item" href="http://49.50.172.121:8800/member/change">Reset password</a></li>
+                </ul>
+            </li>
+            <!--안녕하세요 && 님-->
+            <li class="nav-item" id="nav_user_col">
+                <span  id="nav_user" class="nav-link active">
+                    {% for member in total_member %}
+                    Hi, {{member.userid}}.
+                {% endfor %}
+                </span>
+            </li>
+            <!--여기까지-->
+            </ul>
+        </div>
+        </div>
+    </nav>
+</header>
+            <main class="form-signin">
+                <form action="http://49.50.172.121:8800/member/changed" method="post"> {% csrf_token %}
+                <div class="h1_cover">
+                    <h1 class="h3 mb-3 fw-normal">Reset password</h1>
+                </div>
+                  <div class="form-floating text-black">
+                    <input type="text" name="id" class="form-control mb-2" id="floatingInput" placeholder="id~ id~">
+                    <label for="floatingInput">Id</label>
+                  </div>
+                  <div class="form-floating text-black">
+                    <input type="password" name="newpw" class="form-control mb-2" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">New Password</label>
+                  </div>
+
+                  <button id="login_button" class="w-100 btn btn-lg mt-2" type="submit">reset</button>
+                  <p class="mt-4 mb-1 text-muted">2021-09-08</p>
+                </form>
+              </main>
+      
+        </body>
+</html>
+
+    

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOKCHA</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbuGh2Y%2Fbtrec3KoRnm%2FKZePZMZjsk1i32qziqb0XK%2Fimg.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+    <link rel="stylesheet" href="{% static 'join.css' %}">
+</head>
+        <body>
+            <main class="form-signin">
+                <form action="http://49.50.172.121:8800/member/joined" method="post">
+                    {% csrf_token %}
+                <div class="h1_cover">
+                    <h1 class="h3 mb-3 fw-normal">Sign up</h1>
+                </div>
+                <div class="form-floating text-black">
+                    <input type="email" name="email" autocomplete="email" class="cp-input form-control mb-2" required id="id_email" id="floatingInput" placeholder="이메일">
+                    <label for="floatingInput">Email</label>
+                </div>
+
+                <div class="form-floating text-black">
+                    <input type="text" name="nickname" maxlength="15" placeholder="닉네임" class="error cp-input form-control mb-2" required id="id_nickname" id="floatingInput">
+                    <label for="floatingInput">Nickname</label>
+                </div>
+
+                <div class="form-floating text-black">
+                    <input type="password" name="password1" required id="id_password1" autocomplete="new-password" class="form-control mb-2 cp-input" placeholder="비밀번호">
+                    <label for="floatingPassword">Password</label>
+                </div>
+
+                <div class="form-floating text-black">
+                    <input type="password" name="password2" required id="id_password2" autocomplete="new-password" class="form-control mb-2 cp-input" placeholder="비밀번호 확인">
+                    <label for="floatingPassword">Password confirmation</label>
+                </div>
+
+                <div class="radio mb-1 text-muted">
+                    <label>
+                    <input type="radio" value="radio" required> 북챠피디아 이용 약관에 전체 동의합니다.
+                    </label>
+                </div>
+
+                <button id="login_button" class="cp-button w-100 btn btn-lg mt-2" type="submit">Sign up</button>
+                <p class="mt-4 mb-1">이미 회원이신가요? <a class="link" href="#">Login</a></p>
+                <p class="mb-1 text-muted">2021-09-07</p>
+
+                </form>
+            </main>
+        </body>
+</html>
+{% endblock content %}

@@ -1,0 +1,15 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('join', views.join),
+    path('joined', views.joined),
+    path('resetpw', views.change),
+    path('login', views.login),
+    path('logined', views.logined),
+    path('search', views.search),
+    path('receive', views.rec),
+    path('send', views.send),
+    path('static', views.statictest),
+    path('novel/<int:chapter>/<str:player1>/<str:player2>', views.novel)
+]

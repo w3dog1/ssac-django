@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mb-4">
+    <div class="row gx-4 gx-lg-5 border mb-3 pd-2 d-flex justify-content-center">
+        <div class="col-lg-4 col-md-12 col-sm-12 text-center mt-2 mb-4">
+            <div class="mt-5 mb-5">
+                <div class="mb-2"><i class="bi-gem fs-1 text-primary"></i></div>
+                <h3 class="h4 mb-2">{{ item.name }}</h3>
+                <h4 class="h5 mb-2 text-muted">{{ item.writer }}</h4>
+            </div>
+            <a href="{% url 'review--create' %}"><button class="btn btn-info btn-sm">Write Review</button></a>
+            <a href="http://49.50.172.121:8800/member/list"><button class="btn btn-info btn-sm">Back to List</button></a>
+        </div>
+        {% for review in reviews %}
+            <div class="card bg-dark mb-3">
+                <div class="card-header">
+                    평점: <b>{{ review.point }}</b>점
+                    <a href="{% url 'review-delete' book_id=item.id review_id=review.id %}">
+                        <button type="button" class="close" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </a>
+                </div>
+                <div class="card-body">
+                    한줄평: <p class="card-text">{{ review.comment}}</p>
+                </div>
+            </div>       
+        {% endfor %}
+    </div>
+    <div class="row gx-4 gx-lg-5 mt-5 d-flex justify-content-center"></div>
+</div>
+{% endblock %}

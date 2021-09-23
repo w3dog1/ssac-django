@@ -1,0 +1,11 @@
+from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
+from .models import Book, User, Review
+
+# Register your models here.
+
+admin.site.register(User, UserAdmin)
+admin.site.register(Book)
+admin.site.register(Review)
+
+# UserAdmin -> User 모델에 대해 특별한 인터페이스 제공?? 어떻게 생긴 건지 구글링 확인
