@@ -6,7 +6,7 @@ from member.forms import BookForm, ReviewForm
 from django.http import HttpResponseRedirect, request
 from django.db.models import Count, Avg
 from django.urls import reverse
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
 # Create your views here.
 
@@ -40,6 +40,16 @@ class ReviewCreateView(CreateView):
 
     def get_success_url(self):
         return reverse("review-detail", kwargs=({"review_id": self.object.id}))
+
+# 리뷰 수정
+class ReviewUpdateView(UpdateView):
+    model = Review
+    form_class = ReviewForm
+    template_name = "bookcha/review_form.html"
+    pk_url_kwarg = "review_id"
+
+    def get_success_url(self):
+        return reverse("index", kwargs=({"review_id": self.object.id}))
 
 
 # 리뷰 삭제 (close 버튼)

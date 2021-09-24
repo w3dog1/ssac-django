@@ -32,7 +32,7 @@ class ReviewForm(forms.ModelForm):
         widgets = {
             'book': forms.HiddenInput(),
             'author': forms.HiddenInput(),
-            'point': forms.RadioSelect,
+            'point': forms.RadioSelect(),
         }
 
 

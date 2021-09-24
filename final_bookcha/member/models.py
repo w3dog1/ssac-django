@@ -48,3 +48,6 @@ class Review(models.Model):
     created_at = models.DateTimeField(
         auto_now_add=True)  # 모델이 생성된 시간을 자동으로 필드에 넣어
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title

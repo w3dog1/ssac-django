@@ -1,3 +1,4 @@
+{% extends 'base.html'%}
 {% load static %}
 {% load widget_tweaks %}
 {% block content %}
@@ -13,75 +14,28 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
-<body>
-    <!--header-->
-<header class="mb-auto">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a href="http://49.50.172.121:8800/"><img id="nav_img" class="mb-4 navbar-brand" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FuAV4y%2Fbtrd5EvWVRw%2F4ZTGJqhtplydRDG6NRXsjK%2Fimg.png" alt=""></a>
-        <!-- <a class="navbar-brand" href="#">BOOKCHA</a> -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="http://49.50.172.121:8800/">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="http://49.50.172.121:8800/member/list">Book</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/member/review/list">Reviews</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="http://49.50.172.121:8800/member/create">Add</a>
-            </li>
-
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                My pages
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                {% if user.is_authenticated %}
-                <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
-                <li><a class="dropdown-item" href="{% url 'account_change_password' %}">Change password</a></li>
-                {% else %}
-                <li><a class="dropdown-item" href="{% url 'account_signup' %}">Join</a></li>
-                <li><a class="dropdown-item" href="{% url 'account_login' %}">Login</a></li>
-                {% endif %}
-                </ul>
-            </li>
-            <!--안녕하세요 && 님-->
-            <li class="nav-item" id="nav_user_col">
-                <span  id="nav_user" class="nav-link active">
-                    {% if user.is_authenticated %}
-                    Hi, {{user.nickname}}.
-                {% endif %}
-                </span>
-            </li>
-            <!--여기까지-->
-            </ul>
-        </div>
-        </div>
-    </nav>
-</header>
-    <main class="site-body bg-dark">
-        <form class="review-form max-content-width" method="post" autocomplete="off">
-            {% csrf_token %}
-        <div>
-            <span class="cp-chip green mt-3">책</span>
-        </div>
-        <div class="rating">
+<body class="d- flex text-center text-white bg-dark mg-3" cz-shortcut-listen="true">
+    <main class="site-body">
+    <form class="review-form max-content-width" method="post" autocomplete="off" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="rating point">
+            <span class="cp-chip green mb-4">책</span>
         <div class="cp-stars">
             {% for radio in form.point %}
-                {{ radio }}
+            {{radio}}
             {% endfor %}
         </div>
+        {% for error in form.point.errors %}
+            <div class="error-message">{{ error }}</div>
+            {% endfor %}
         </div>
         <div class="content">
-            {{ form.comment|add_class:"cp-input"|add_error_class:"error"|attr:"placeholder:책 리뷰를 작성해 주세요." }}
+        {{ form.comment|add_class:"cp-input"|add_error_class:"error"|attr:"placeholder:리뷰를 작성해 주세요." }}
+        {% for error in form.comment.errors %}
+            <div class="error-message">{{ error }}</div>
+        {% endfor %}
         </div>
+
         <div class="buttons">
         <a class="cp-button secondary cancel" href="{% url 'index' %}">취소</a>
         <button class="cp-button submit" type="submit">완료</button>

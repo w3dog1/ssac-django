@@ -18,6 +18,7 @@ urlpatterns = [
     path('reviews/<int:review_id>',
          views.ReviewDetailView.as_view(), name="review-detail"),
     path('reviews/new/', views.ReviewCreateView.as_view(), name="review--create"),
+    path('reviews/<int:review_id>/edit/', views.ReviewUpdateView.as_view(), name="review-update"),
     path('books/<int:id>/', views.detail, name='book-detail'),
     path('books/<int:book_id>/review/create',
          views.review_create, name='review-create'),
