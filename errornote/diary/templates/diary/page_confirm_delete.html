@@ -1,0 +1,21 @@
+{% extends './base.html' %}
+
+{% block content %}
+<div class="wrap-delete">
+    <div class="delete-box">
+        <div class="note-info">
+            <p>&#123;</p>
+            <span class="note-date">{{object.dt_created}}</span>
+            <span class="note-title">{{object.title}}}</span>
+            <p>&#125;</p>
+        </div>
+        <p>에러 리포트를 진짜진짜 지울까요?</p>
+        <form method='post'>{% csrf_token %}
+            <ul>
+                <li><input type="submit" value="지우기"></li>
+                <li><a href="{% url 'page-detail' object.id %}">취소하기</a></li>
+            </ul>
+        </form>
+    </div>
+</div>
+{% endblock content %}

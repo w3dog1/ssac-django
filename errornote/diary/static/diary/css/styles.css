@@ -386,7 +386,7 @@ img {
 }
 .text-box h2{
     padding-bottom: 30px;
-    font-family: 'NanumBarunpen';
+    font-family: 'NanumSquare';
     color: #4e4f53;
     font-size: 19px;
     font-weight: bold; 
@@ -394,13 +394,13 @@ img {
 .text-box .state p{
     display: inline-block;
     font-family: 'NanumSquare';
-    color: #060b18;
+    color: #4e4f53;
     font-size: 15px;
 }
 .text-box .state span{
     padding-left: 6px;
     font-family: 'NanumBarunpen';
-    color: #4e4f53;
+    color: #060b18;
     font-size: 15px;
     letter-spacing: -0.29px;  
 }
