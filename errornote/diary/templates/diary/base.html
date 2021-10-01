@@ -25,10 +25,23 @@
         <ul>
             <li><a href="{% url 'page-list' %}">모아보기</a></li>
             <li><a href="{% url 'info' %}">사용법</a></li>
-            <li><a href="{% url 'page-create' %}">Error Note 쓰기</a></li>
+            <li>
+                {% if user.is_authenticated %}
+                <a style="color: black;" href="{% url 'account_logout' %}">로그아웃</a>
+                {% else %}
+                <a style="color: black;" href="{% url 'account_login' %}">로그인</a>
+                <br><br><br>
+                <a style="color: black;" href="{% url 'account_signup' %}">회원가입</a>
+                {% endif %}
+            </li>
+            <li><a class="iconplease" href="{% url 'page-create' %}">Error Note 쓰기</a></li>
         </ul>
-        </div>
-
-        {% block content %} {% endblock content %}
-    </body>
+        {% if user.is_authenticated %}
+            <p class="logstate" style="font-size: smaller; text-align: right; margin-right: 17px; background-color: turquoise;">안녕하세요, {{user.nickname}}님!</p>
+        {% else %}
+        {% endif %}
+    </div>
+    
+    {% block content %} {% endblock content %}
+</body>
 </html>

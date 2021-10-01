@@ -7,7 +7,7 @@ h1,h2,h3,p,a,ul,li{
     outline: none;
 }
 @font-face {
-    font-family: 'NanumBarunpen';
+    font-family: 'NanumSquare';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumBarunpen.woff') format('woff');
 }
 a:hover,a:active {
@@ -174,7 +174,6 @@ img {
 }
 
 
-
 /*note*/
 .wrap-note .note{
     padding-left: 236px;
@@ -269,7 +268,7 @@ img {
     font-family: 'NanumBarunpen';
     color: #4e4f53;
     font-weight: normal;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 1.67;
     text-align: center; 
 }
@@ -762,4 +761,5 @@ input[type="submit"]{
     border-radius: 22.5px;
     cursor: pointer;
 }
+
 
