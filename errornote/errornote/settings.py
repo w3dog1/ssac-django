@@ -37,13 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "django.contrib.sites",#장고 프로젝트 하나로 여러 웹사이트 운영
+    'django.contrib.sites',#장고 프로젝트 하나로 여러 웹사이트 운영
     'diary',
     'userplate',
-    "allauth",
-    "allauth.account",
-    "allauth.socialaccount",
-    "allauth.socialaccount.providers.naver",
+    'widget_tweaks',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.naver',
 ]
 
 # 각각 사이트의 아이디
@@ -118,7 +119,7 @@ AUTHENTICATION_BACKENDS = [
 
 AUTH_USER_MODEL = 'userplate.User'
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko'
 
 TIME_ZONE = 'Asia/Seoul'
 
@@ -144,10 +145,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 ACCOUNT_SIGNUP_REDIRECT_URL = 'index'
 LOGIN_REDIRECT_URL = 'index'
 ACCOUNT_LOGOUT_ON_GET = True
-ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_PASSWORD_INPUT_RENDER_VALUE = True
 ACCOUNT_SIGNUP_FORM_CLASS = 'userplate.forms.SignupForm'
+ACCOUNT_EMAIL_VARIFICATION = 'optional'
+
 
 # Email settings
 

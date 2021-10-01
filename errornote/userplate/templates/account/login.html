@@ -1,0 +1,43 @@
+{% extends 'userplate_base/base2.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="wrap-delete">
+    <div class="delete-box">
+        <div class="note-info">
+            <p>&#123;</p>
+            <span class="note-title">Error Note</span>
+            <p>&#125;</p>
+        </div>
+        <p>로그인</p>
+        <form method="post">
+            {% csrf_token %}
+            <ul>
+                {% for error in form.non_field_errors %}
+                    <div class="form-error error-message">{{ error }}</div>
+                {% endfor %}
+                <div>
+                    {{ form.login|add_class:"cp-input"|attr:"placeholder:이메일" }}
+                    {% for error in form.login.errors %}
+                        <div class="form-error error-message">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                <div>
+                    {{ form.password|attr:"class:cp-input"|attr:"placeholder:비밀번호" }}
+                    {% for error in form.password.errors %}
+                        <div class="form-error error-message">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                <button class="cp-button" type="submit">로그인하기</button>
+                </ul>
+                <ul>
+                    <div class="info">
+                        <a class="item" style="color: black;" href="{% url 'account_reset_password' %}">비밀번호 찾기 | </a>
+                        <a class="item" style="color: #EE8088;" href="{% url 'account_signup' %}">회원가입</a>
+                    </div>
+                </ul>
+            </form>
+    </div>
+</div>
+{% endblock %}

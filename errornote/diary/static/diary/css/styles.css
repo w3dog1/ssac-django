@@ -521,7 +521,7 @@ img {
 
 /*wrap-delete*/
 .wrap-delete{
-    margin: 170px 53px;
+    margin: 0px 53px;
 }
 .delete-box{
     width: 615px;
@@ -762,4 +762,230 @@ input[type="submit"]{
     cursor: pointer;
 }
 
+/* Input */
 
+    div.cp-input {
+        display: inline-block;
+        position: relative;
+    }
+    
+    input.cp-input,
+    textarea.cp-input,
+    .cp-input input {
+        width: 100%;
+        font-size: 17px;
+        letter-spacing: -0.3px;
+        padding: 16px 24px;
+        border: 1px solid var(--input-border);
+        background-color: var(--input-background);
+        outline: none;
+        border-radius: 7px;
+    }
+    
+    input.cp-input:focus,
+    textarea.cp-input:focus,
+    .cp-input input:focus {
+        background-color: var(--input-focus-background);
+        border-color: var(--input-focus-border);
+        transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+    
+    input.cp-input:placeholder,
+    textarea.cp-input:placholder,
+    .cp-input input:placeholder {
+        color: var(--input-placeholder);
+    }
+    
+    textarea.cp-input {
+        line-height: 1.82;
+    }
+    
+    .cp-input.error {
+        padding-right: 46px;
+        border: 1px solid var(--input-error-border);
+        background-position: top 13px right 13px;
+        background-image: url("../icons/ic-error.svg");
+        background-size: 29px;
+        background-repeat: no-repeat;
+    }
+    
+    .error-message {
+        color: var(--input-error);
+        font-size: 14px;
+        line-height: 1.7;
+    }
+    
+    .cp-input:not(.error) ~ .error-message {
+        display: none;
+    }
+    
+    .cp-input.error ~ .error-message {
+        display: block;
+        width: 100%;
+        text-align: right;
+    }
+    
+/* Button */
+
+    a.cp-button {
+        display: inline-block;
+        text-decoration: none;
+        text-align: center;
+    }
+    
+    .cp-button {
+        border: 1px solid;
+        outline: none;
+        padding: 14px 28px;
+        margin-top: 20px;
+        border-radius: 9999px;
+        font-size: 15px;
+        font-weight: 400;
+        letter-spacing: -0.32px;
+        cursor: pointer;
+        background-color: white;
+        color: var(--button-text);
+    }
+    
+    .cp-button:hover,
+    .cp-button:active {
+        color: var(--button-text);
+        background-color: var(--button-primary-hover-background);
+        transition: background-color 0.2s ease, opacity 0.2s ease;
+    }
+    
+    .cp-button.secondary {
+        background-color: var(--button-secondary-background);
+    }
+    
+    .cp-button.warn {
+        background-color: var(--button-warn-background);
+    }
+    
+    .cp-button.secondary:hover,
+    .cp-button.secondary:active,
+    .cp-button.warn:hover,
+    .cp-button.warn:active {
+        opacity: 0.6;
+    }
+    
+    .cp-button.inverted {
+        padding: 5px 17px;
+        font-size: 17px;
+        font-weight: 300;
+        background-color: transparent;
+        color: #EE8088;
+        border: 1px solid #EE8088;
+    }
+
+/* Error */
+
+    .cp-input.error {
+        padding-right: 46px;
+        border: 1px solid #e6584e;
+        background-position: top 13px right 13px;
+        background-size: 29px;
+        background-repeat: no-repeat;
+    }
+    
+    .error-message {
+        color: #e6584e;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+    
+    .cp-input:not(.error) ~ .error-message {
+        display: none;
+    }
+    
+    .cp-input.error ~ .error-message {
+        display: block;
+        width: 100%;
+        text-align: right;
+    }
+    
+
+/* Account */
+    .account .form-error {
+        text-align: center;
+    }
+    
+    .account .info {
+        width: max-content;
+        margin: 25px auto;
+    }
+    
+    .account button[type="submit"] {
+        display: block;
+        width: 100%;
+        margin: 0;
+    }
+    
+    .account .info .item {
+        display: inline-block;
+        min-width: 140px;
+        padding: 0 21px;
+    }
+    
+    .account .info .item + .item {
+        border-left: 1px solid var(--border);
+    }
+    
+    .account .info .link {
+        margin-left: 13px;
+        color: var(--account-link);
+    }
+    
+    .account form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .account form > :not(:last-child) {
+        margin-bottom: 20px;
+    }
+    
+    .account form .checkbox {
+        padding: 4px;
+        text-align: right;
+    }
+    
+    /* account-password */
+    
+    .account-password {
+        margin: 100px auto;
+        padding: 68px 150px;
+        max-width: 740px;
+        width: 100%;
+    }
+    
+    .account-password .title {
+        margin: 24px auto;
+        text-align: center;
+    }
+    
+    .account-password .heading {
+        font-size: 25px;
+        font-weight: normal;
+    }
+    
+    .account-password form > :not(:last-child) {
+        margin-bottom: 20px;
+    }
+    
+    .account-password button[type="submit"] {
+        display: block;
+        width: 100%;
+        margin: 20px 0 25px;
+    }
+    
+    .account-password-dialog {
+        margin: 100px auto;
+        text-align: center;
+        width: 100%;
+    }
+    
+    .account-password-dialog .button {
+        margin-top: 5px;
+    }
+    
