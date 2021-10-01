@@ -5,7 +5,7 @@
     <div class="note">         
         <div class="note-list">
             <ul>
-                {% for obj in object_list %}
+                {% for obj in page_obj.object_list %}
                 <li>
                     <a href="{% url 'page-detail' obj.id %}">
                         <div class="date">
@@ -15,7 +15,9 @@
                         <h2>{{obj.title}}</h2>
                         <div class="score">
                             <p>심각도</p>
-                            <span>{{obj.score}}점</span>
+                            <span>{{obj.score}}점</span><br>
+                            <p>작성자</p>
+                            <span>{{obj.author.nickname}}</span>
                         </div>
                     </a>
                 </li>

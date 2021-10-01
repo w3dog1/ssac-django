@@ -17,6 +17,7 @@
                 </div>
             </div>
             <div class="detail">{{object.content|linebreaksbr}}</div>
+            {% if page.author == user %}
             <div class="notetext-btn">
                 <ul>
                     <li><a href="{% url 'page-delete' object.id %}">삭제하기</a></li>
@@ -24,6 +25,7 @@
                     <!--여기.. 얘.. 수정된 데이터를 같이 조회해 줘야 해서 object.id를 함께 적어 줘야 함 안 그러면 NoReverseMatch 뜸 ㅡㅡ-->
                 </ul>
             </div>
+            {% endif %}
         </div>
     </div>
 </div>
