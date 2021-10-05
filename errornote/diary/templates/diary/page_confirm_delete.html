@@ -1,8 +1,8 @@
 {% extends './base.html' %}
 
 {% block content %}
-<div class="wrap-delete">
-    <div class="delete-box">
+<div class="wrap-delete container">
+    <div class="delete-box col-lg-12 col-md-12 col-sm-1">
         <div class="note-info">
             <p>&#123;</p>
             <span class="note-date">{{object.dt_created}}</span>
@@ -13,7 +13,6 @@
         <form method='post'>{% csrf_token %}
             <ul>
                 <li><input type="submit" value="지우기"></li>
-                <li><a href="{% url 'page-detail' object.id %}">취소하기</a></li>
             </ul>
         </form>
     </div>

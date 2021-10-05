@@ -1,12 +1,12 @@
 {% extends './base.html' %}
 
 {% block content %} <!-- content block 처리 -->
-<div class="wrap-note">
-    <div class="note">         
+<div class="contents py-5 wrap-note d-flex">
+    <div class="note container col-sm-3 col-md-4">         
         <div class="note-list">
             <ul>
                 {% for obj in page_obj.object_list %}
-                <li>
+                <li class="card-body">
                     <a href="{% url 'page-detail' obj.id %}">
                         <div class="date">
                             <span>{{obj.dt_created|date:"d"}}</span>

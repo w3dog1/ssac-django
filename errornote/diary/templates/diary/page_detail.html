@@ -1,9 +1,9 @@
 {% extends './base.html' %} <!-- base 템플릿 상속 -->
 
 {% block content %} <!-- content block 처리 -->
-<div class="wrap-notetext">
-    <div class="notetext">
-        <div class="text-box">
+<div class="wrap-notetext container">
+    <div class="notetext row">
+        <div class="text-box col-12 col-xs-none">
             <h2>{{object.title}}</h2>
             <div class="score">
                 <p>심각도</p>
@@ -16,7 +16,7 @@
                     <p class="year">{{object.dt_created|date:"Y"}}</p>
                 </div>
             </div>
-            <div class="detail">{{object.content|linebreaksbr}}</div>
+            <div class="detail">{{object.content|safe}}</div>
             {% if page.author == user %}
             <div class="notetext-btn">
                 <ul>

@@ -1,11 +1,11 @@
 {% extends './base.html' %} <!-- base 템플릿 상속 -->
 
 {% block content %} <!-- content block 처리 -->
-<div class="wrap-post">
-    <form method="post">{% csrf_token %}
-        <div class="editor">
+<div class="wrap-post container">
+    <form method="post row">{% csrf_token %}
+        <div class="editor col-12 col-xs-none">
             <div class="input input-date">
-                <p>날짜</p>
+                <p>날짜는 자동 입력됩니다</p>
                 {{form.dt_created}}
             </div>
 
@@ -24,8 +24,54 @@
                     <span>{{error}}</span>
                 {% endfor %}
             </div>
+            <!--summernote 부트스트랩-->
+            <textarea name="content" id="summernote">
+            {{ form.content.value|default_if_none:'' }}</textarea>
+            <script>
+        $('#summernote').summernote({
+            placeholder: '여기에 내용 입력하세요~ 그림파일 용량은 2MB까지입니다~',
+            tabsize: 2,
+            height: 300, // 에디터 높이
+            defaultFontName: '바탕체',
+            toolbar: [
+    ['style', ['style']],
+    ['fontname', ['fontname']],
+    ['fontsize', ['fontsize']],
+    ['font style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+    ['color', ['forecolor','color']],
+    ['para', ['ul', 'ol', 'paragraph']],
+    ['table', ['table']],
+    ['view', ['codeview', 'help']],
+    ],
+        defaultFontName:'바탕',
+        fontNames: ['Arial', 'Comic Sans MS','맑은 고딕','궁서','굴림','돋음체','바탕'],
+        fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72'],
+        maximumImageFileSize:2097152,
 
-            {{form.content}}
+    popover: {
+                    image: [
+                        ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
+                        ['float', ['floatLeft', 'floatRight', 'floatNone']],
+                        ['remove', ['removeMedia']]
+                    ],
+                    link: [
+                        ['link', ['linkDialogShow', 'unlink']]
+                    ],
+                    table: [
+                        ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
+                        ['delete', ['deleteRow', 'deleteCol', 'deleteTable']],
+                    ],
+                    air: [
+                        ['color', ['color']],
+                        ['font', ['bold', 'underline', 'clear']],
+                        ['para', ['ul', 'paragraph']],
+                        ['table', ['table']],
+                        ['insert', ['link', 'picture']]
+                    ]
+                    }
+        });
+    $('.dropdown-toggle').dropdown()
+        </script>
 
             <div class="post-btn">
                 <input type="submit" value="작성완료">
